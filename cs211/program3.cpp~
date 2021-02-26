@@ -1,0 +1,161 @@
+//this program is similar to array.cpp
+#include<iostream>
+#include<iomanip>
+#include <fstream>
+
+using namespace std;
+const int SIZE = 10 ; 
+void fillArray( int ar[], int s);
+void printArray(const int ar[], int s) ;
+void reverseArray(int ar[], int ar2[], int s) ;
+void FindEven(int ar[], int s) ;
+int findMax(const int ar[], int s) ; 
+int keySearch(const int ar[], int s, int key) ; 
+
+
+int main() 
+{
+  
+  int ar[SIZE] ;
+  int ar2[SIZE] ; 
+  int choice ; 
+  int key, result ;
+  int index ; 
+                                                                                                                                                                           
+  fillArray(ar, SIZE) ;
+  cout << endl ;
+  cout << "The numbers in the array are: " ;
+  printArray(ar, SIZE) ;  
+  cout << endl ; 
+
+  fillArray(ar2, SIZE); 
+  reverseArray(ar, ar2, SIZE); 
+  cout << endl ; 
+  cout << "The numbers in reverse are: " ;
+  printArray(ar2, SIZE) ; 
+  cout << endl ; 
+
+  FindEven(ar, SIZE) ; 
+
+  fillArray(ar, SIZE) ; 
+  cout << "The highest number in the array is: " << findMax(ar, SIZE) << endl ; 
+
+  cout << "Enter the number you're looking for: " ; 
+  cin >> key ; 
+  cout << endl ; 
+
+
+  result = (keySearch(ar, SIZE, key));
+  if(result >-1)
+    cout << key << " was found at index " << result << endl ; 
+  else 
+    cout << key << " was not found." << endl ; 
+ 
+
+return 0 ;
+}
+
+void fillArray(int ar[], int s)
+{
+  ifstream fin ;
+
+  //  index = 0 ;
+
+
+  fin.open("data2.txt" ); //input file is located in same directory as program file
+    if(!fin) //checks for file
+    {
+      cout << "Doesnt exist " << endl ;
+     
+    }
+  else //if file exists it inputs all the inf
+    {
+  
+  // string ar[SIZE];
+      for(int i = 0 ; i < s ; i++)
+	{
+	  fin >> ar[i] ; 
+	  // cout << "**** " <<  ar[i] << endl ; 
+	    }
+          }
+  fin.close() ; 
+}
+     
+
+
+void printArray(const int ar[], int s)
+{
+
+  for(int i = 0 ; i< s ; i++ ) //outputs 5 numbers
+    cout << ar[i] << " "  ;
+  cout << endl ;
+}
+
+void reverseArray(int ar[], int ar2[], int s)
+{
+  int temp = 0 ; 
+  for(int i = SIZE-1 ; i >= 0 ; i--)
+    {       
+      ar2[temp] = ar[i] ; 
+      temp++ ; 
+    }
+}
+
+void FindEven(int ar[], int s)
+{
+  cout << "Even: " ;
+  for(int i = 0; i <SIZE ; i++)
+    {
+      if(ar[i]%2 ==0)
+	cout << ar[i] << " "  ; 
+    }
+  cout << endl ;
+}
+
+int findMax(const int ar[], int s) 
+{
+  int highestI = 0 ; 
+
+  for(int i=1 ; i < SIZE ; i ++) 
+    
+      if(ar[i] > ar[highestI]) 
+	highestI = i ;
+      return ar[highestI] ;
+
+     
+}
+
+
+int keySearch(const int ar[], int s, int key)
+{
+for(int i = 0 ; i < SIZE ; i++)
+  {
+    if(ar[i]==key)
+      {
+	return i ;  
+	  }
+    return -1 ; 
+  }
+} 
+
+
+ /*void reverseArray (int ar[], int s)
+{
+  int smallestIndex;//index of the smallest value                                                                                                                                                          
+  int temp; //temporary variable to hold smallest value                                                                                                                                                    
+
+  for(int i = 0 ; i < s-1 ; i++)
+    {
+      smallestIndex = i; //smallest value                                                                                                                                                                  
+
+      for(int j = i+1 ; j < s ;  j++)
+        {
+          if(ar[j] > ar[smallestIndex])
+            smallestIndex = j;
+        }
+      temp = ar[smallestIndex];
+      ar[smallestIndex] = ar[i];
+      ar[i] = temp;
+    }
+}
+ */

@@ -1,0 +1,97 @@
+Script started on Fri 01 Mar 2019 10:53:31 PM PST
+]0;cordo026@empress:~/cs421/hw2b/Prog1/Prog2/Prog2[?1034h[cordo026@empress Prog2]$ g++ td.cpp
+]0;cordo026@empress:~/cs421/hw2b/Prog1/Prog2/Prog2[cordo026@empress Prog2]$ ./a.out
+This is a table driven scanner. Needs trs.txt and dfas.txt.
+States are 0 to 9 and chars are a to d
+         a b c d
+State 0: 0 1     
+State 1:         
+State 2:     2 3 
+State 3:         
+State 4:         
+State 5:         
+State 6:         
+State 7:         
+State 8:         
+State 9:         
+token1 starts in 0 and ends in 1
+token2 starts in 2 and ends in 3
+.....done reading tables....
+@@Enter a string: ab
+Trying dfa 0----------
+state: 0 char: a
+new state: 0
+state: 0 char: b
+new state: 1
+token found
+do control-C to quit
+@@Enter a string: abb
+Trying dfa 0----------
+state: 0 char: a
+new state: 0
+state: 0 char: b
+new state: 1
+token found
+state: 0 char: b
+new state: 1
+do control-C to quit
+@@Enter a string: aaab
+Trying dfa 0----------
+state: 0 char: a
+new state: 0
+state: 0 char: a
+new state: 0
+state: 0 char: a
+new state: 0
+state: 0 char: b
+new state: 1
+token found
+do control-C to quit
+@@Enter a string: cd
+Trying dfa 0----------
+state: 0 char: c
+new state: -1
+lexical error
+Trying dfa 1----------
+state: 2 char: c
+new state: 2
+state: 2 char: d
+new state: 3
+token found
+do control-C to quit
+@@Enter a string: cdd
+Trying dfa 0----------
+state: 0 char: c
+new state: -1
+lexical error
+Trying dfa 1----------
+state: 2 char: c
+new state: 2
+state: 2 char: d
+new state: 3
+token found
+state: 0 char: d
+new state: -1
+lexical error
+do control-C to quit
+@@Enter a string: cccd
+Trying dfa 0----------
+state: 0 char: c
+new state: -1
+lexical error
+Trying dfa 1----------
+state: 2 char: c
+new state: 2
+state: 2 char: c
+new state: 2
+state: 2 char: c
+new state: 2
+state: 2 char: d
+new state: 3
+token found
+do control-C to quit
+@@Enter a string: ^C
+]0;cordo026@empress:~/cs421/hw2b/Prog1/Prog2/Prog2[cordo026@empress Prog2]$ exit
+exit
+
+Script done on Fri 01 Mar 2019 10:54:04 PM PST

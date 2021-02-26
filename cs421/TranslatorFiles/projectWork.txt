@@ -1,0 +1,30 @@
+
+GROUP#9
+
+Must have divided the work as specified.
+1.State who did what by indicating: 
+  Member A tasks (getEword) - who:Sean Gow, Rogelio Cordova, Vincent Harris
+  Member B tasks (gen) - who:Sean Gow, Rogelio Cordova, Vincent Harris
+  Member C tasks (dictionary) - who:Sean Gow
+  Who updated which parser functions with getEword and gen
+  calls? 
+
+***NOTE***
+ Sean Gow corrected us on the placement of the Ewords and Gens that Vincent\
+and I placed.
+
+If the member did not fully contribute to the assigned part,
+do not list his/her name!!!!!
+
+2. Each person came to the meeting?
+    VIA online codeshare.io, yes
+3. You have included all the required comments?
+   (updated the grammar rules in comments?)
+   yes
+4. The project produced correct output for all 6
+   test cases?
+   yes
+5. If you did EC error recovery,
+   test 7 worked and produced translated.txt
+   and errors.txt?
+   We did not do the EC error recovery

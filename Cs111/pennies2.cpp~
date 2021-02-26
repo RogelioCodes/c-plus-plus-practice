@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+  int days = 1;
+  double pennies = 0.01;
+  double total =0.0 ;
+  
+    cout << "Enter the number of days you worked: " ;
+    cin >> days;
+  
+do
+  {
+    cout << "Enter the number of days you worked: " ;
+    cin >> days;
+
+  for (int dinero =1; dinero <= days; dinero ++)
+      {
+
+	cout << setw(5)<< dinero<< right<< setw(10)<<pennies<< endl;
+	total += pennies ;
+	pennies *=2;
+      }
+  }
+  while (days <1) ;
+    
+     
+ cout << "\n" << "Total" << setprecision(5)<<right <<setw(10)<< total <<endl << endl ;
+
+  return 0;}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+#include<iostream>
+#include<iomanip>
+using namespace std; 
+
+int main()
+{
+  int month;
+  int currentMeter ; 
+  int previousMeter ;
+  double total ; 
+  double amount ;
+  double lessTotal ; 
+
+  cout << "Enter the month: ";
+  cin >> month ; 
+
+  if (month <= 0 || month > 12)
+    {
+      cout << month << " is an invalid month" << endl << endl ; 
+    }
+  else
+    {
+      cout << "Enter the current meter reading: " ; 
+      cin >> currentMeter ;
+      cout << "Enter the previous meter reading: " ;
+      cin >> previousMeter ; 
+
+      if(previousMeter > currentMeter || previousMeter < 0 )
+	{
+	  cout << "These readings are invalid" << endl << endl ; 
+	}
+      else 
+	{
+	  total = currentMeter - previousMeter ;
+	  lessTotal = total - 400 ;
+
+	  if(total > 400 )
+	    {
+	      switch(month)
+		{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 10: 
+		case 11:
+		case 12:
+		  amount = (.06575 * lessTotal) + 8.50 ;
+		  break ; 
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		  amount = (.07525 * lessTotal) + 8.50 ;
+		  break ;
+		}  
+		  cout << endl ; 
+		  cout << "You consumed " << total << " and your amount due is " << fixed << setprecision(2) << "$" << amount << endl ;
+		  cout << endl ; 
+		} 
+	      else
+		{
+		  amount = 8.50 ;
+		  cout << endl ; 
+		  cout << "You consumed " << total << " and your amount due is " << fixed << setprecision(2) << "$" << amount << endl ;
+                  cout << endl ;
+		}
+	}
+    }
+  return 0 ;
+}

@@ -1,0 +1,74 @@
+/***************************************************************************************************************************************************
+Rogelio Cordova
+CS111
+Assignment 4
+3-4-2017
+
+This program will collect ages until the user enters a negative input while simultaneously sorting them by oldest, youngest, the numbers of minors and 
+adults as well as the average.
+****************************************************************************************************************************************************/
+
+#include<iomanip>
+#include<iostream>
+
+using namespace std; 
+
+int main()
+{
+  //variables
+  int total = 0 ; 
+  int minors = 0 ; 
+  int adults = 0 ; 
+  int oldest = 0 ; 
+  int youngest = 0 ; 
+  int age ; 
+  int counter = 0 ; 
+
+  //collects age
+  cout << "Enter an age: " ; 
+  cin >> age ; 
+
+  while( age>=0 )//as long as an age is > 0 
+    {
+      counter++ ; //counter 
+      total = total + age ; //calculates total 
+
+      if(age < 18)//checks that age is less than 18
+	{
+	  minors++ ; //if true minors gets 1 point
+	}
+      else 
+	{
+	  adults ++ ; //if not true adults get 1 point 
+	}
+      if(age > oldest ) //checks to see if it is the oldest 
+	{
+	  oldest = age ; //if true this age is now the oldest
+	}
+      else if(youngest > age) //if not true it checks to see if it is the youngest
+	{
+	  youngest = age ; //if true it is the youngest
+	} 
+      if(counter == 1 ) //if the counter is 1 then this becomes the youngest age
+	{
+	  youngest = age ; 
+	}
+      cout << "Enter an age: " ; 
+      cin >> age ;
+    }
+
+  if(counter == 0) //if no ages are entered 
+    {
+      cout <<  "\nNo ages were entered." << endl ; 
+    }
+  else //if ages ARE entered
+   {
+     //outputs
+     cout << endl << (double)total/counter << " (average)" << endl ; //calculates average  
+     cout << minors << " (minors)" << endl ;
+     cout << adults << " (adults)" << endl  ;
+     cout << oldest << " (oldest)" << endl ; 
+     cout << youngest << " (youngest)" << endl ; 
+   }
+  return 0 ; 
+}

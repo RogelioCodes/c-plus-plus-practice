@@ -1,0 +1,49 @@
+// Example program
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  int choice, number, lowerBound, upperBound,low, loop;
+  
+  do
+  {
+      cout << " Sequence of numbers Menu" << endl; 
+      cout << " 1. Odd numbers" << endl;
+      cout << " 2. Even numbers" << endl; 
+      cout << " 3. Multiples of 3" << endl;
+      cout << " 4. Multiples of 4" << endl;
+      cout << " 5. Squares of odd numbers" << endl; 
+      cout << " 6. Quit\n" << endl; 
+      cout << " Enter your choice: " << endl;
+      cin >> choice; 
+      
+      if(choice<1 || choice>6)
+      { 
+          cout << "Invalid choice\n" ; 
+      }
+      else
+      { if(choice >=1 && choice <= 5)
+        do{ 
+        cout << "Please enter a lower bound." ; 
+          cin >> lowerBound ;
+          cout << "Please enter an upper bound." ;
+          cin >> upperBound;
+        }
+       while (if(lowerBound <= upperBound && lowerBound > 0 && upperBound >0 )
+         {number=lowerBound;
+          switch(choice)
+          {
+              case 1: loop;
+              if(number%2==1);
+              cout << number;
+              number++  ;
+          )
+         }}
+     
+      
+      
+}while(choice!=6);
+return 0;
+}

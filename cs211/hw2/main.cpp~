@@ -1,0 +1,8 @@
+#include "HospitalCharges.h"
+
+int main()
+{
+  HospitalCharges HospitalChargess ; 
+  HospitalChargess.ProcessTransactionFile("transactionFile.txt");
+  return 0 ; 
+}

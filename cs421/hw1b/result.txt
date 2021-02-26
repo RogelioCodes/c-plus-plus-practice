@@ -1,0 +1,51 @@
+Script started on Thu 07 Feb 2019 12:17:05 PM PST
+]0;cordo026@empress:~/cs421/hw1b[?1034h[cordo026@empress hw1b]$ g++ generator.cpp queue.cpp
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ ./a.out
+Input 1 to start generating binary numbers: 1
+
+0
+1
+00
+01
+10
+11
+000
+001
+010
+011
+100
+101
+110
+111
+0000
+0001
+0010
+0011
+0100
+0101
+0110
+Number of binary numbers generated: 21
+Enter 1 to continue, Ctrl-C to exit: 1
+0111
+Number of binary numbers generated: 22
+Enter 1 to continue, Ctrl-C to exit: ^C
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ g++ recognizer.cpp queue.cpp
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ ./a.out
+
+BINARY NUMBER RECOGNIZER
+Input a number: 0000
+YES IN L.
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ ./a.out
+
+BINARY NUMBER RECOGNIZER
+Input a number: 0110
+YES IN L.
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ ./a.out
+
+BINARY NUMBER RECOGNIZER
+Input a number: 0121
+NO NOT IN L.
+]0;cordo026@empress:~/cs421/hw1b[cordo026@empress hw1b]$ exit
+exit
+
+Script done on Thu 07 Feb 2019 12:17:59 PM PST

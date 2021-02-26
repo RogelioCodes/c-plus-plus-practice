@@ -1,0 +1,73 @@
+#include<iomanip>
+#include<iostream> 
+#include<cstdlib>
+using namespace std; 
+
+int rollDice() ; //prototype 
+bool playGame() ; //prototype
+
+int main()
+{
+  srand(time(0));
+ 
+  int Games ; //number of games
+  double win = 0 ; // num of wins
+  int juego ; // the game itself 
+ 
+  cout << "How many games do you wish to play: " ; //collects num of games to play
+  cin >> Games ; 
+
+  for(int i = 1 ; i < Games ; i++ )
+    {
+      juego = playGame() ; 
+      if(juego == true )
+	win++ ;
+    } 
+
+  //outputs info
+  cout << setw(10) << "Win % " << setw(10) << "lose %" << endl ; 
+  cout << setw(10) <<  fixed << setprecision(3) << (win/Games) * 100.0 << setw(10) << fixed << setprecision(3) << ((Games - win)/Games)*100.0 << endl ; 
+
+  return 0 ; 
+}
+
+bool playGame() //plays the game
+{
+  int roll ; //dice 1 
+  int roll2 ; //dice 2
+
+  roll = rollDice() ; 
+
+  if(roll == 7 || roll == 11) //decides win or loss
+    {
+      return true ;  //win
+    }
+  else if(roll == 2 || roll ==3 || roll == 12)
+    {
+      return false ; //loss
+    }
+  else 
+    {
+do
+  {
+    roll2 = rollDice(); 
+  }while(roll2 !=7 && roll2 != roll) ; 
+    }
+
+  if( roll2 == 7)
+    {
+      return false ; 
+    }
+  else if(roll2 == roll)
+    {
+      return true ;
+    }
+}
+
+int rollDice() //rolls the dice
+  {
+    int roll ; 
+    roll = (rand()%6 + 1) + (rand()%6 +1) ;
+
+    return roll;
+  }

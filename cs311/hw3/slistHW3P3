@@ -1,0 +1,18 @@
+
+// HW3P3 Instruction - what to add to slist.h
+
+// The copy constructor to allow pass by value and return
+// The regular copy constructor does not work well with pointers
+slist(const slist&);
+
+// overloading =
+// The operator = does not work well with pointers
+slist& operator=(const slist&);
+
+// overload == which normally does not work with Objects
+// It returns true only if the two lists look identical
+// For testing this, you must create Client2.cpp 
+
+
+// The code to put in the implementation file slist.cpp are in Notes-7A
+

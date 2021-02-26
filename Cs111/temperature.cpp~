@@ -1,0 +1,30 @@
+/***************************************************************************************************************************************************
+Rogelio Cordova
+CS111
+Assignment 2
+2-10-2017
+
+This program will ask the user for a celcius temperature and then convert it to the Fahrenheit temperature and round it to the nearest integer
+****************************************************************************************************************************************************/
+#include<iostream>
+using namespace std; 
+
+int main()
+{
+  //these are my variables
+  int celsius = 0 ;   
+  int rounded = 0 ;
+  double fahr = 0;
+
+  cout << "Enter a temperature in Celsius: " ;
+  cin >> celsius ; 
+
+  cout << endl;
+
+  fahr = (9.0/5) * celsius + 32;
+  rounded = (int)(fahr+0.5);
+
+  cout << celsius << "C = " << rounded <<  "F" << endl << endl ;
+ 
+ return 0 ; 
+}

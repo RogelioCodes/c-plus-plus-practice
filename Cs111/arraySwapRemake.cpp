@@ -1,0 +1,61 @@
+#include<iostream>
+#include<cstdlib>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+  srand(time(0));
+  int SIZE = 10 ;
+  int ar[SIZE] ;
+  
+  
+  cout << "Original: " ;
+  for(int i = 0; i < SIZE ; i++)
+    {
+      ar[i] = (rand()%100 + 1) ;
+      cout << ar[i] << " " ;
+    }
+  cout << endl <<  "Reverse: " ;
+  for(int i = 0 , r = SIZE - 1 ; i<SIZE ; i++, r--)
+    {       cout  << ar[r] << " " ;
+    }
+
+  int largestIndex ; 
+  int temp ; 
+  int lowestIndex ;  
+  cout << endl << "Largest: " ;
+  for( int last= SIZE-1 ; last >= 0 ; last --)
+    {
+      largestIndex= 0 ; 
+    
+      for(int i = 0 ; i <= last ; i++)
+	{
+	  if(ar[i] > ar[largestIndex])
+	    largestIndex = i ; 
+	}
+      temp = ar[largestIndex] ; 
+      ar[largestIndex] = ar[last] ;
+      ar[last] = temp ; 
+      cout << ar[last] << " " ;
+    }
+
+  cout << endl <<  "Least: " ;
+  for( int last= SIZE ; last >= 1 ; last --)
+    {
+      lowestIndex= 0 ;
+
+      for(int i = 0 ; i <= last ; i++)
+        {
+          if(ar[i] < ar[lowestIndex])
+            lowestIndex = i ;
+        }
+      temp = ar[lowestIndex] ;
+      ar[lowestIndex] = ar[last] ;
+      ar[last] = temp ;
+      cout << ar[last] << " " ;
+    }
+  cout << endl ;
+
+  return 0 ;
+}

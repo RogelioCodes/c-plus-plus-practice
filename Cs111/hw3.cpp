@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int itemone = 12.95 ;
+  int itemtwo = 24.95 ;
+  int itemthree = 6.95 ;
+  int itemfour = 14.95 ;
+  int itemfive = 3.95 ;
+  int subtotal = itemone + itemtwo + itemthree + itemfour + itemfive ;
+  double tax = subtotal * .06 ;
+  double total = subtotal + tax ;
+  cout << "The subtotal is " << subtotal << " dollars." << endl ;
+  cout << "The tax is " << tax << " dollars." << endl ;
+  cout << "Your finale total is " << total << " dollars." << endl ;  
+  return 0;
+}

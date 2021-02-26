@@ -1,0 +1,58 @@
+#include "instructorCollection.h" 
+#include <fstream>
+
+
+void InstructorCollection:: getInfo()
+{
+  string fName ;
+  string lName ;
+  char gen ; 
+  long SSN ; 
+  long empID ;
+  string officeNum ;
+  long c1num ;
+  string c1name ;
+  int c1cr ; 
+  long c2num ;
+  string c2name ; 
+  int c2cr ;
+  long c3num ;
+  string c3name ;
+  int c3cr ;
+
+  ifstream fin ; 
+  fin.open ("lab5file.txt") ;
+  
+   
+      fin >> fName >> lName >> gen >> SSN >> empID >> officeNum >> c1num >> c1name >> c1cr >> c2num >> c2name >> c2cr >> c3num >> c3name >> c3cr ;
+ while(fin)
+   {
+     InstructorProfile newEntry ; 
+     newEntry.setInstructorProfile(fName,lName, gen, SSN, empID, officeNum, c1num, c1name, c1cr,
+			      c2num, c2name, c2cr, c3num,c3name, c3cr);
+     collection.push_back(newEntry);
+     fin >> fName >> lName >> gen >> SSN >> empID >> officeNum >> c1num >> c1name >> c1cr >> \
+       c2num >> c2name >> c2cr >> c3num >> c3name >> c3cr ;
+
+   }
+ fin.close();
+  
+
+}
+
+
+void InstructorCollection:: printCollection() const 
+{
+  cout << "Instuctor Information:" << endl ; 
+  cout << "----------------------------------------------------" << endl ; 
+  for(int i = 0; i<collection.size(); i++)
+    {
+      cout << "Information about instructor: " << i << endl ; 
+	cout << "---------------------------" << endl ;
+	collection[i].printCollection() ; 
+ 
+    }
+  cout << endl ; 
+
+}
+

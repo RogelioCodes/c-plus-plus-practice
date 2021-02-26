@@ -1,0 +1,66 @@
+/*****************************
+this is used to calculate a number to an exponent. U GOT DA BASE AND DA EXPONENTHats it
+***************************************************/
+#define EPSILON 0.0000001
+
+int pow(int base, int exponent)
+{
+  int ans = 1 ;
+  for(int i = 1 ; i <= exponent ; i++)
+    ans *= base ;
+  return ans ;
+}
+
+double fabs( double absolute)
+{
+  if (absolute < 0 )
+    return absolute  *  -1 ;
+  else
+    return absolute ;
+}
+
+int round(double absolute)
+{
+  return (int)(absolute + 0.5) ;
+}
+
+
+
+bool isPrime(int number)
+{// Given:   num an integer > 1
+  // Returns: true if num is prime
+  // false otherwise.
+
+  int i;
+
+  for (i=2; i<number; i++)
+    {
+      if (number % i == 0)
+        {
+          return false;
+        }
+    }
+
+  return true;
+}
+
+
+
+double sqrt(double num)
+{
+  double low = 0;
+  double high = num;
+  double mid = 0;
+
+  while (high - low > EPSILON) {
+    mid = low + (high - low) / 2; // finding mid value
+    if (mid*mid > num) {
+      high = mid;
+    } else {
+      low = mid;
+    }
+  }
+  num = mid ;
+  return num;
+}
+

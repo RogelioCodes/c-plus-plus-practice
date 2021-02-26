@@ -1,0 +1,17 @@
+Script started on Sat 30 Mar 2019 09:02:20 PM PDT
+]0;cordo026@empress:~/cs421/hw3A/hw3A[?1034h[cordo026@empress hw3A]$ g__[[[K++ 1l1.cpp
+g++: error: 1l1.cpp: No such file or directory
+g++: fatal error: no input files
+compilation terminated.
+]0;cordo026@empress:~/cs421/hw3A/hw3A[cordo026@empress hw3A]$ g++ ll1.cpp
+]0;cordo026@empress:~/cs421/hw3A/hw3A[cordo026@empress hw3A]$ ./a.out
+0 1
+------------
+S
+A
+A Enter a string made of 0's and/or 1's: 0110
+^X^C
+]0;cordo026@empress:~/cs421/hw3A/hw3A[cordo026@empress hw3A]$ exit
+exit
+
+Script done on Sat 30 Mar 2019 09:02:52 PM PDT

@@ -1,0 +1,89 @@
+#include<iostream>
+#include<iomanip>
+#include <fstream>
+#include<vector>
+#include<cstdlib>
+#include<string> 
+
+using namespace std;
+
+void insertFunc(vector<string>& myVector, string data, int index);
+void deleteFunc(vector<string>& myVector,int index) ;
+void printFunc(const vector<string>& myVector) ; 
+
+int main () 
+{
+    vector<string> myVector ;
+    string data ; 
+    string command ; //the command 
+    int index ;
+
+
+    ifstream fin ;
+
+    fin.open("data4.txt"); //checks for file 
+    if(!fin)
+      {
+	cout << "File doesn't exist" << endl ;
+	exit(1) ;
+      }
+
+      
+	fin >> command ;
+
+	while(fin)
+	  {
+	    if(command == "Insert")
+	      {
+		fin >> data >> index ;
+
+	        insertFunc( myVector, data, index);
+
+		//call insert func
+	      }
+	    else if(command == "Delete")
+	      {
+		fin >> index ; 
+		deleteFunc( myVector,index) ; 
+	
+	      }
+	    else if(command == "Print")
+	      
+		printFunc(myVector) ; 
+		fin >> command ; 
+	      
+	  }
+
+
+	return 0 ;
+
+}
+
+void insertFunc(vector<string>& myVector, string data, int index)
+{
+  if(index!=0 && (index > myVector.size() || index < 0 )) 
+      cout << "Error inserting at " << index << endl ; 
+     
+ else 
+   myVector.insert(myVector.begin() + index, data) ; 
+   
+}
+
+void deleteFunc(vector<string>& myVector,int index) //dont need data because youre deleting it
+{
+
+  if(index!=0 || (index > myVector.size()-1 || index < 0 ))
+    cout << "Error deleting at " << index << endl ;
+  else //index exists
+    myVector.erase(myVector.begin()+index) ; 
+
+    
+}
+
+void printFunc(const vector<string>& myVector) 
+{
+  for(int i = 0 ; i < myVector.size() ; i++)
+    {
+      cout << myVector[i] << endl << endl ; 
+    }
+}

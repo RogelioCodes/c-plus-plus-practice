@@ -1,0 +1,12 @@
+//Rogelio Cordova
+//client file
+//g++
+//hw4
+#include "dgraph.h"
+int main(){
+ 
+  dgraph tObject;
+  tObject.fillTable();
+  tObject.displayGraph();
+     
+}

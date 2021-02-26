@@ -1,0 +1,33 @@
+
+SubmitIt this file with the executable.
+
+Group#:9
+
+Must have divided the work as specified.
+1.State who did what by indicating: 
+  Member A tasks (syntax error functions) - who: Rogelio Cordova
+  Member B tasks (match and next_token)- who: Sean Gow
+  Member C tasks (main()) who: Vincent Harris
+  Who wrote which parser functions? 
+
+***NOTE***
+The functions with Member Name/ Sean Gow means that we had to have Sean fix or help out with our previously flawed code
+
+If the member did not fully contribute to the assigned part, do not list his/her name!!!!!
+
+2.  Each person came to the meeting? Yes, we met up in person.
+
+3.  You have included all the required comments?
+   (Grammer rules and Programmer names)
+   Yes
+
+4.  The parser produced correct output for
+    all 6 test cases?
+
+    Yes it outputs correctly
+
+5.  What extra credit feature did you include?
+    If it is error correction, did you make sure errors.txt
+    got produced?
+    [ You may still do EC later ]
+    Yes, the EC works as intended

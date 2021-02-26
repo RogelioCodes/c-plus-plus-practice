@@ -1,0 +1,58 @@
+#include <iostream>
+
+using namespace std;
+int getNum();
+void showProgInfo() ;
+int findMax(int n1, int n2, int n3 );
+     
+int main()
+{
+  showProgInfo();
+  cout << "Enter an integer: " ;
+  int n1 = getNum();
+  
+  cout << "Enter an integer: " ; 
+  int n2 = getNum();
+  
+  cout << "Enter an integer: " ; 
+  int n3 = getNum();
+  int max ;
+  cout << "The largest number between " << n1 << " " << n2 << " " << "and " << n3 << " " << "is: " << findMax(n1, n2, n3) << "\n" ;
+
+  return 0;
+}
+
+void showProgInfo()
+{
+  cout << "*******************************************************************\n" ;
+  cout << "This program will ask you to enter 3 numbers and find the largest.\n" ;
+  cout << "*******************************************************************\n" ;
+
+} 
+  
+int getNum()
+{
+  int num = 0;
+    
+  cin >> num; 
+  while(num<0)
+    { 
+      cout << "Invalid num!" << endl;
+      cout << "Please enter a positive integer: " << endl; 
+      cin >> num; 
+    }
+
+    
+  return num;
+}
+  
+int findMax(int n1, int n2, int n3 )
+{
+  int max = 0;
+  if (n1 > 0) max = n1 ;
+  if (n2>n1) max = n2 ;
+  if (n3>n2) max = n3 ;
+  
+  
+  return max ;
+}

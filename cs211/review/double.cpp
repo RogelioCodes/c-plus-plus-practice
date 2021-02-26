@@ -1,0 +1,210 @@
+#include <iostream>
+#include<string>
+using namespace std;
+class DLL;
+class Node
+{
+  friend class DLL;
+private:
+  string firstName;
+  string lastName;
+  string phoneNumber;
+  Node * nextRecord;
+  Node * previousRecord;
+};
+class DLL
+{
+private:
+  Node * head;
+public:
+  DLL();
+  DLL(const DLL&); // optional
+  ~DLL();
+  void insert(string, string, string);
+  void print();
+  void searchByName(string, string);
+  void remove(string, string);
+};
+//--------------------------------------------
+// the default constructor
+DLL::DLL()
+{
+  head = nullptr ; 
+}
+//--------------------------------------------
+// the copy constructor: optional
+DLL::DLL(const DLL& source)
+{
+  head = source.head ; 
+}
+//--------------------------------------------
+// the destructor
+DLL::~DLL()
+{
+  Node *temp=nullptr;
+  while(head!=nullptr)
+    
+    {
+      
+      temp = head;
+      
+      head=head->nextRecord;
+      
+      delete temp;
+      
+    }
+}
+//--------------------------------------------
+// print the linked list
+void DLL::print ()
+{
+  Node * nodePtr  ; 
+  nodePtr = head ; 
+
+int n = 0 ; 
+  while(nodePtr != nullptr)
+    {
+      
+      n++ ; 
+      cout << "Person # " << n << ": " << nodePtr-> firstName << ", " << nodePtr-> lastName<< ", " << nodePtr-> phoneNumber << endl ; 
+      nodePtr = nodePtr-> nextRecord ; 
+    }
+  n++ ; 
+  //  cout << "Person # " << n << ": " << nodePtr-> firstName << ", " << nodePtr-> lastName<< ", " << nodePtr-> phoneNumber << endl ;
+
+}
+//--------------------------------------------
+// search for a particular person in the list and print the
+// corresponding phone number
+void DLL::searchByName (string fName, string lName)
+{
+  Node *nodePtr = head ; 
+  int pos = 1 ; 
+
+  if(head == nullptr) 
+    {
+      cout << "List is empty chaps. " << endl ; 
+    }
+  else 
+    {
+      while(nodePtr!= nullptr)
+	{
+	  if(nodePtr-> firstName == fName)
+	    {
+	      cout << "Found " << nodePtr-> firstName << " at pos " << pos << endl ; 
+	      return ; 
+	    }
+	  nodePtr = nodePtr-> nextRecord ; 
+	  pos ++ ; 
+	}
+    }
+  cout << "No chappies found. " << endl ; 
+}
+//--------------------------------------------
+// create a node and insert it in the list in order (list
+// should be sorted by the person’s first name)
+void DLL::insert (string fName, string lName, string phone)
+{
+  Node *temp = new Node;
+  
+  temp->firstName = fName;
+  temp->lastName = lName;
+  temp->phoneNumber = phone; 
+  temp->nextRecord = nullptr;
+  temp->previousRecord = nullptr;
+  
+  if(head == nullptr)
+    {
+      head = temp; 
+    }
+  else
+    { 
+      if(head->firstName.compare(temp->firstName) > 0)
+	{
+	  cout << "in here " << endl ; 
+	  temp->nextRecord = head;   
+	  head->previousRecord = temp;
+	  head = temp;
+	}
+       else
+	{   
+	  Node *start = head;   
+	  Node *preStart = nullptr;
+	  bool posFound = false;
+	    
+	  while(start != nullptr)
+	    {        
+	     if(start->firstName.compare(temp->firstName) > 0)
+		{
+		  cout << "in here sas" << endl ; 
+		  preStart->nextRecord = temp;
+		  start->previousRecord = temp;   
+		  temp->nextRecord = start;
+		  temp->previousRecord = preStart;
+		  posFound = true;
+	   
+		  break;    
+		  }
+	      preStart = start;   
+	      start = start->nextRecord ; 
+	       }
+	  if(!posFound)
+	    {
+	      cout << "in yass " << endl ;
+	      preStart->nextRecord = temp;
+	      temp->previousRecord = preStart;       
+	    }   
+	} 
+    }
+}
+//--------------------------------------------
+// remove a person's record from the list
+void DLL::remove (string fName, string lName)
+{
+  Node* to_remove = head;
+  while(to_remove && to_remove->firstName != fName)
+    to_remove = to_remove->nextRecord;
+
+  // Do the removal if we found it
+  if(to_remove)
+    {
+      // If it was at the head, advance the head to the next item
+      if(to_remove == head)
+	head = head->nextRecord;
+      // Remove from the list
+      if(to_remove->nextRecord)
+	to_remove->nextRecord->previousRecord = to_remove->previousRecord;
+      if(to_remove->previousRecord)
+	to_remove->previousRecord->nextRecord = to_remove->nextRecord;
+
+      // Free the removed node
+      delete to_remove;
+    }
+
+
+}
+//--------------------------------------------
+int main ()
+{
+  DLL list1;
+  list1.insert ("Mayssaa", "Najjar", "878-635-1234");
+  list1.insert ("Jim", "Meyer", "337-465-2345");
+  list1.insert ("Joe", "Didier", "352-654-1983");
+  list1.insert ("Yara", "Sarkis", "858-694-1787");
+  list1.insert ("Nancy", "Garcia", "617-227-5454");
+
+  list1.print();
+  list1.searchByName ("Nancy", "Garcia");
+  list1.remove ("Mayssaa", "Najjar");
+  list1.remove ("Yara", "Sarkis");
+  list1.remove ("Jim", "Meyer");
+  //  list1.remove("Nancy", "Garcia") ; 
+  //list1.remove("Joe", "Didier") ; 
+  list1.print();
+
+  // this part is optional
+  // DLL list2(list1);
+  //  list2.print();
+  
+  return 0;
+}

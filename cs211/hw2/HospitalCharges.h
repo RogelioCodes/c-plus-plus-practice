@@ -1,0 +1,32 @@
+#ifndef HOSPITALCHARGES_H 
+#define HOSPITALCHARGES_H
+#include "patientAccount.h"
+
+//#include <cstdlib> 
+#include <fstream> 
+#include<iomanip>
+#include<vector>
+class HospitalCharges
+{
+
+ private: 
+  vector <Surgery> surgeries ; 
+  vector <Medication> medications;
+  vector <PatientAccount> patientsAccounts;
+
+ public: 
+  void printAllSurgeries() const ; 
+  void printAllMedications() const ; 
+  void printAllPatientAccounts()const ; 
+  void processTransactionFile(string filename) ; 
+  void CreateNewPatient (string pFName, string pLName, long pSSN, char pGen, int pAge, double pRate, int aMonth, int aDay, int aYear);
+  void CreateNewSurgery (int sCode, string sDescription, double sCharge);
+  void CreateNewMedication(int mCode, string mDescription, double mCharge);
+  void AddPatientSurgery (int sCode, long pNum);
+  void AddPatientMedication (int mCode, long pNum) ;
+  void DischargePatient (long pNum, int dMonth, int dDay, int dYear) ;
+  void CalculatePatientBill(long pNum);
+  void aPush(const PatientAccount& P) ;
+}
+;
+#endif

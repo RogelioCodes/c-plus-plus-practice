@@ -1,0 +1,52 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+
+  srand (time(0));
+  int UserGuess; // Counter
+  int RightGuess = rand() % 100 + 1;
+
+  int num ;
+
+  cout << "Guess a number between 1 and 100: " << endl;
+
+do
+  {
+    cin >> UserGuess;
+    if (UserGuess < 1 || UserGuess > 100)
+      {
+        cout << "The number is in the range 1 to 100. Guess again." << endl;
+      }
+    if  (UserGuess > RightGuess)
+      {
+	cout << "Too high! Try again!" << endl;
+
+      }
+
+
+    if  (UserGuess < RightGuess)
+      {
+	cout << "Too low! Try again!" << endl;
+      }
+
+      
+    if (UserGuess == RightGuess)
+      {
+        cout << "You guessed right, good job!" << endl;
+        return 0 ;
+      }
+  }
+
+ while (UserGuess != RightGuess);
+
+
+
+ return 0;
+}
+
+

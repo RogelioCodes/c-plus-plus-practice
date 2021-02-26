@@ -1,0 +1,135 @@
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+//#include"myMath.h"
+using namespace std ; 
+
+class Morgage 
+{
+  double amt ; 
+  double rate ; 
+  int years ; 
+  
+public:   
+  double getAmount() const ; //DONT NEED MORGAGE BECAUSE its inside the MORGAGE CLASS  
+  double getInterest() const  ;
+  double getYears() const ; 
+  //double getTerm() const ; 
+  double getMonthlyPayment() const ; 
+  double getTotalPayback() const ;
+
+  void setAmount(double a);
+  void setInterest(double r );    
+  void setYears(double y ) ; 
+ 
+ 
+};
+
+//think of the purple word as a shortcut 
+double Morgage:: getAmount() const //CANT CHANGE DATA MEMBERS 
+{
+  return amt ; 
+}
+
+
+void Morgage::setAmount(double a ) 
+{
+  amt = a ; 
+}
+
+
+
+////////////////////////////////
+
+
+double Morgage :: getInterest() const
+{
+  return rate ;
+}
+void Morgage::setInterest(double r )
+{
+  rate = r ;
+}
+
+//////////////////////////////////////////
+double Morgage :: getYears() const
+{
+  return years ;
+}
+void Morgage::setYears(double y )
+{
+  years = y ;
+}
+
+
+
+
+
+
+
+double Morgage:: getMonthlyPayment() const
+{
+  double monthlyPayment ;
+
+  double term ;
+  term = pow((1+getInterest()/12.00), getYears()*12)  ;
+
+  monthlyPayment = (getAmount() * term * (getInterest() /12))/(term-1) ;
+
+  return monthlyPayment ; 
+}
+
+
+double Morgage:: getTotalPayback() const 
+{
+  double totalPayback ; 
+  totalPayback =  (getMonthlyPayment()*12.00 )* getYears() ;
+
+  return totalPayback ; 
+}
+
+
+
+int main()
+{
+  Morgage m ; // has 3 parts AMOUNT, RATE, YEARS AND ALL OF THEM HOLD JUNK JUNK JUNK 
+  double loanAmount, interestRate, loanLength ; //monthlyPayment,term , totalPayback  ; 
+  double monthsInYear = 12.00 ; 
+
+
+    
+  cout << "Enter the loan amount in dollars: " ;
+  cin >> loanAmount ; 
+
+  while(loanAmount < 1)
+    {
+      cout << "Please enter a number greater than 0" << endl ; 
+      cout << "Enter the loan amount in dollars: " ;
+      cin >> loanAmount ;
+    }
+
+  m.setAmount(loanAmount) ; 
+
+  
+  cout << "Enter the annual interest rate in decimal form: " ; 
+  cin >> interestRate ; 
+  
+  m.setInterest(interestRate) ; 
+
+
+  cout << "Enter the length of the loan in years: " ; 
+  cin >> loanLength ; 
+  m.setYears(loanLength) ; 
+
+  
+  cout << "Loan amount: " << m.getAmount() << endl ; 
+  cout << "Interest rate: " <<  m.getInterest() << endl ; 
+  cout << "Loan length: " << m.getYears() << endl << endl ; 
+  
+  
+
+  cout << "Monthly payment: " << "$" << m.getMonthlyPayment() << endl ; 
+  cout << "Total payback: "  << "$" <<  fixed << setprecision(2) << m.getTotalPayback() << endl ; 
+  
+return 0 ; 
+}

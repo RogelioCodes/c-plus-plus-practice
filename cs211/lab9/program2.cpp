@@ -1,0 +1,52 @@
+#include<iostream>
+using namespace std ; 
+//const int ARRAY_SIZE = 10;
+
+bool isMember(const int [] ,int, int);
+
+
+int main() 
+{
+  const int ARRAY_SIZE = 10;
+
+
+  int num ; 
+  //bool yas = true ;
+  int numbers[ARRAY_SIZE] = {2, 4, 6, 8, 10, 12, 14, 16 ,18, 20 };
+
+  cout << "Enter a number to search for: " ; 
+  cin >> num ; 
+
+  isMember(numbers, ARRAY_SIZE, num) ;
+  /* {
+      cout << num << " was found. " << endl ; 
+      }
+  //  if(yas == isMember(numbers , ARRAY_SIZE, num) )
+  else
+  cout << num << " was not found." << endl ; 
+  */
+  return 0;
+}
+
+bool isMember(const int numbers[],int ARRAY_SIZE, int num) 
+{
+  
+    if(ARRAY_SIZE-1 < 0 )
+    {
+      cout << num << " was not found." << endl ;
+
+      return false ; 
+
+    }
+  else if(numbers[ARRAY_SIZE-1] == num)
+    {
+      cout << num << " was found. " << endl ;
+
+      return true ;
+    }
+  else
+    {
+      return isMember(numbers, ARRAY_SIZE-1, num) ; 
+    }
+} 
+

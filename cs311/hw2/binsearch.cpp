@@ -1,0 +1,48 @@
+//HW#: HW2P1 binsearch
+//Your name: Rogelio Cordova
+//Complier:  g++
+//File type: recursive binary search .cpp
+//=========================================================
+#include<iostream> 
+
+using namespace std ; 
+
+
+int binarySearch(int ar[],int first, int last, int key) ; 
+const int MAX = 10 ; 
+int main() 
+{
+  int ar[MAX] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19} ;  
+  int first = 0 ; 
+  int last = MAX - 1 ; 
+  int key ; 
+
+
+  cout << "Enter num: " ; 
+  cin >> key ; 
+  binarySearch(ar,first,last,key);
+  
+  if((binarySearch(ar,first,last,key)>=0)) //if an index is returned, if a negative index comes back it wasn't found.
+  cout << key << " found at index: " << binarySearch(ar,first,last,key) << endl ; 
+  else cout << key << " Not found." << endl ; 
+
+}
+
+
+int binarySearch(int ar[],int first, int last, int key)
+{
+
+  if (first <= last) {
+    int mid = (first + last) / 2;  // compute mid point.
+    if (key == ar[mid]) 
+      return mid;   // found it.
+    else if (key < ar[mid]) 
+      // Call ourself for the lower part of the array
+      return binarySearch(ar, first, mid-1, key);
+    else
+      // Call ourself for the upper part of the array
+      return binarySearch(ar, mid+1, last, key);
+  }
+  return -(first + 1);    // failed to find key
+
+}

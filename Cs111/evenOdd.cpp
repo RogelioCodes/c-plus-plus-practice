@@ -1,0 +1,53 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+  int num; //number                                                                                                                                                                                       
+  int even = 0; //even                                                                                                                                                                                    
+  int odd = 0; //odd                                                                                                                                                                                      
+  int total = 0; //total                                                                                                                                                                                  
+  double avg; //average                                                                                                                                                                                   
+
+  //input the first number                                                                                                                                                                              
+  cout << "Enter a number: ";
+  cin >> num;
+
+  while(num != 0) //break out when the user enters a zero                                                                                                                                               
+    {
+      //To calculate the average number after the while loop, you need to do something here                                                                                                             
+      total = total + num  ;
+
+      //check if the number is even or odd                                                                                                                                                              
+      if(num % 2 == 0)
+	{
+          even++;
+          cout << num << " is even." << endl << endl ;
+	}
+      else
+	{
+          odd++;
+          cout << num << " is odd." << endl << endl;
+	}
+
+      //input the next number                                                                                                                                                                           
+      cout << "Enter a number: ";
+      cin >> num;
+      }
+
+  //show the result                                                                                                                                                                                     
+  if(even == 0&& odd==0)//The user didn't check number for even or odd. She entered a zero for the first input.                                                                                                 
+    cout << "\nNo numbers were checked" << endl;
+  else //The user checked at least one number for even or odd. Then go ahead show the total numbers of even and odd and average number.                                                                 
+    {
+      avg = (double)total / (even + odd);
+     
+      cout << endl ;
+      cout << even << " even numbers" << endl;
+      cout << odd << " odd numbers" << endl;
+      cout << "The average is " << avg << endl;
+    }
+  return 0;
+}
+

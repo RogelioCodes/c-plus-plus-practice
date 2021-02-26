@@ -1,0 +1,13 @@
+Insert Students 0
+Insert Welcome 0
+Insert Back 1
+Insert Ready 5
+Insert To 6
+Insert Program 3
+Insert Good 4
+Delete 1
+Insert Job 4
+Delete 7
+Insert CS211 1
+Delete 3
+Print

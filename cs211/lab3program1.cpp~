@@ -1,0 +1,71 @@
+#include<iostream>
+#include<string> 
+#include<iomanip> 
+#include<cstdlib> 
+
+using namespace std; 
+string replaceSubString(string& str1, string str2, string str3);
+
+int main()
+{
+
+  string str1;  
+  string str2 ; 
+  string str3 ; 
+  string str4  ; 
+
+  cout << "Enter a string for string 1: " ;
+  getline(cin, str1);
+  cout << endl ;
+
+  cout << "Enter a string for string 2: " ;
+  getline(cin, str2);
+  cout << endl ;
+
+  cout << "Enter a string for string 3: " ;
+  getline(cin, str3);
+  cout << endl ; 
+
+  cout << "string1: " <<  str1 << endl ;
+  cout << "string2: " <<  str2 << endl ;
+  cout << "string3: " <<  str3 << endl ;
+
+
+  replaceSubString(str1,str2, str3) ; 
+  cout << endl <<  "Here are the new strings: " << endl ; 
+
+  cout << "string1: " <<  str1 << endl ; 
+  cout << "string2: " <<  str2 << endl ; 
+  cout << "string3: " <<  str3 << endl << endl; 
+}
+
+string replaceSubString(string& str1, string str2, string str3 )
+{
+  /*  cout << "SIZE: " <<  str1.size() << " " << endl ;
+  cout << "SIZE: " <<  str2.size() << " " << endl ;
+  cout << "SIZE: " <<  str3.size() << " " << endl << endl ;
+  */
+  int p ; 
+  p = str1.find( str2, 0) ;
+  while(p != str1.npos)
+    {
+      //  cout << "Found an \" the\" at index: " << p << endl ;  
+
+      str1.replace(p, str2.length(), str3);
+
+      p = str1.find(str2, p+1);
+
+
+
+
+    }
+
+
+
+  
+    // for(int i = 0 ; i < p 
+
+  // str1.replace(0, 3, str3);
+  
+
+}

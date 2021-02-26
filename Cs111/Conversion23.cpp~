@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+int main()
+
+{
+  const double inchCent  = 2.54 ;
+  const int inchFoot = 12;
+  const int inchYard = 36 ;
+  double centimeters ;
+  double totalInches;
+  int inches, feet, yards;
+  int remainder;
+
+  // please input a length in centimeters
+  cout << "***************************************************************************" << endl;
+  cout << "This program will convert a length in centimeters to yards, feet, and inches." << endl;
+  cout << "*****************************************************************************" << endl;
+  cout << "Enter centimeters: " ;
+  cin >> centimeters ;
+  
+  double unrounded = centimeters/inchCent ; 
+  totalInches = centimeters / inchCent;
+  int round = (int)(unrounded + 0.5);
+  yards  = unrounded/inchYard ;
+  remainder = round % inchFoot ;
+ 
+ 
+  feet = remainder /12 ;
+  inches = remainder % 12;
+
+
+
+
+
+  cout << centimeters << " " << "centimeters is " << totalInches << " " << "inches. Rounded to " << round << " and  " << yards << " yards,  " << feet << " feet, and  "  << inches << " inches." << \
+    endl << endl ; 
+  cout << "Thank you for using the program. Goodbye." << endl ; 
+  return 0 ;
+}
+

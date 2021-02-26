@@ -1,0 +1,82 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+void fillJarsSoldArray (string salsa[], int soldArray[]);
+void printSales (string salsa[], int soldArray[]);
+void getTotal (int soldArray[]);
+void getHighestLowestSelling (string salsa[], int soldArray[]);
+
+int main()
+{
+  string salsa[5] = {"mild", "medium", "sweet", "hot", "zesty"};
+  int soldArray[5] = {0};
+
+  fillJarsSoldArray(salsa, soldArray);
+  printSales(salsa, soldArray);
+  getTotal(soldArray);
+  getHighestLowestSelling(salsa, soldArray);
+
+  return 0;
+
+}
+
+
+void fillJarsSoldArray (string salsa[], int soldArray[])
+{
+  int i = 0;
+  for (i = 0; i < 5; i++)
+     {
+      cout << "Enter the number of jars sold for " << salsa[i] << ": ";
+      cin >> soldArray[i];
+
+      while (soldArray[i] < 0)
+	{
+	  cout << "Enter the number of jars sold for " << salsa[i] << ": ";
+	  cin >> soldArray[i];
+	}
+      cout << "\n";
+    }
+}
+
+
+void printSales (string salsa[], int soldArray[])
+{
+  int i = 0;
+  for (i = 0; i < 5; i++)
+    {
+      cout << salsa[i]  << "\t\t"<< right << setw(5) << soldArray[i] << "\n";
+    }
+}
+
+void getTotal (int soldArray[])
+{
+  int i = 0, Total = 0;
+  for (i = 0; i < 5; i++) 
+    {
+      Total += soldArray[i];
+    }
+  cout << "\nThe total number of jars sold is " << Total << ".";
+}
+
+
+void getHighestLowestSelling (string salsa[], int soldArray[])
+
+{
+  int i = 0, Highest = 0, Lowest = soldArray[0];
+  for (i = 0; i < 5; i++)
+    {
+      if (soldArray[i] >= Highest)
+	{
+	  Highest = i;
+	}
+      if (soldArray[i] <= Lowest)
+	{
+	  Lowest = i;
+        }
+    }
+
+  cout << "\nThe highest selling type is " << salsa[Highest] << ".\n";
+  cout << "The lowest selling type is " << salsa[Lowest] << ".\n";
+}

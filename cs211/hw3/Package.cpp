@@ -1,0 +1,137 @@
+#include "Package.h"
+
+Package::Package() 
+{
+  senderName = " " ; 
+  senderAddress = " " ; 
+  
+  senderCity = " "  ;
+  senderState = " "  ;
+  senderZIPcode = 0 ;
+
+  recipName = " "  ;
+  recipAddress = " "  ;
+  recipCity = " " ;
+  recipState = " "  ;
+  recipZIPcode = 0 ;
+
+  label = " "  ;
+  date = " " ;
+  weight = 0 ;
+  costPerOunce = 0 ;
+  insuranceType = " " ;
+  signatureConfirmation = " "  ;
+
+}
+
+Package::Package(string sName, string sAddress, string sCity, string sState, long sZIPcode, string rName, string rAddress, string rCity, string rState, long rZIPcode, string l, string d, double w, double c, string i, string s) 
+{
+  senderName = sName ; 
+  senderAddress = sAddress ; 
+  senderCity = sCity ; 
+  senderState = sState ; 
+  senderZIPcode = sZIPcode ; 
+
+   recipName = rName ;
+   recipAddress = rAddress ;
+   recipCity = rCity ;
+   recipState = rState ;
+  recipZIPcode = rZIPcode ;
+  
+  label = l ; 
+  date = d ; 
+  weight = w ; 
+  costPerOunce = c ; 
+  insuranceType = i ; 
+  signatureConfirmation = s ; 
+
+
+}
+
+double Package:: calculateCost() const
+{
+  double cost ; 
+  if(insuranceType == "Upto1000")
+    {
+      cost = (weight * costPerOunce) +  5.25 ; 
+    }
+  else if(insuranceType == "Upto5000")
+    {
+      cost = (weight * costPerOunce) + 5.50 ; 
+    }
+  else if(insuranceType == "none" ) 
+    {
+      cost = (weight * costPerOunce) ; 
+    }
+
+  if(signatureConfirmation == "sign")
+    {
+
+      cost += 2.90 ; 
+    }
+
+  return cost ; 
+}
+string Package:: getLabel() const 
+{
+  return label ;
+}
+
+string  Package::getDate()  const 
+{
+  return date ; 
+}
+double Package::getWeight()  const 
+{
+  return weight ; 
+}
+double Package::getCostPerOunce() const 
+{
+  return costPerOunce ; 
+}
+string Package::getInsuranceType()  const 
+{
+  return insuranceType ; 
+}
+string Package::getSignatureConfirmation() const  
+{
+  return signatureConfirmation ; 
+}
+void Package::setLabel(string l) 
+{
+  label = l ; 
+}
+void Package::setDate(string d) 
+{
+  date = d ; 
+}
+void Package::setWeight(double w) 
+{
+  weight = w ; 
+}
+void Package::setCostPerOunce(double c)
+{
+  costPerOunce = c ; 
+}
+void Package::setInsuranceType(string i) 
+{
+  insuranceType = i ; 
+}
+void Package::setSignatureConfirmation(string s) 
+{
+  signatureConfirmation = s ; 
+}
+void Package::printPackage() const
+{
+  cout << "Sender: " << setw(13) << right << senderName << endl ;  
+  cout << "\t     " << senderAddress << endl << setw(19) << right <<  senderCity << ", " << senderState << " " << senderZIPcode << endl  ; 
+  cout << "Recipient: " << setw(11) << right << recipName << endl ; 
+  cout << setw(19) << right <<  recipAddress << endl << setw(20) << right << recipCity << ", " << recipState << " " << recipZIPcode << endl ;   cout << left << "Label: " << setw(12) << right << label << endl ; 
+  cout << left << "Mailed on: " << setw(12) << right << date << endl ; 
+  cout << left << "Weight: " << setw(8) << right << weight << endl ; 
+  cout << left << "Insurance: " << setw(6) << right <<  insuranceType << endl ;
+  cout << left << "Signature: " << setw(6) << right << signatureConfirmation << endl ; 
+  cout << left << "Cost: " << setw(11) << right << calculateCost() << endl ; 
+
+  cout << endl ; 
+}

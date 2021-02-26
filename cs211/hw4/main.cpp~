@@ -1,0 +1,12 @@
+#include "SongPlayer.h" 
+int main()
+{
+  
+  SongPlayer player;
+   player.processTransactionFile();
+   
+  // player.addSong( "asdasda"  ," asasda" , "asdasdasdasda"  , 2.0); 
+  // player.playSong("asdasda") ; 
+  
+return 0;
+} 

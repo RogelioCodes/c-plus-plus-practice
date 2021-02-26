@@ -1,0 +1,372 @@
+#include <iostream>
+#include <string>
+#include<cmath>
+using namespace std;
+class Date; 
+// Forward declaration 
+// Operator overloading function prototypes for
+// Prefix ++ operator
+// Postfix -- operator
+// << operator
+// >> operator
+// greater than operator
+// Subtraction operator
+// Constants
+const int NUM_MONTHS = 12;
+// Declaration of the Date class
+class Date
+{
+  friend ostream& operator<<(ostream& os, const Date& d1) ; 
+  friend istream& operator >>(istream& is, Date& d1); 
+  friend bool operator>(const Date& d1, const Date& d2);
+  friend int operator -(const Date& d1,const Date& d2) ;
+  friend Date operator++(Date& d1);
+  friend Date operator --(Date& d1, int dummy);
+  // Make all the functions whose prototypes are defined
+  // above friends of this class
+private:
+  int month; // To hold the month
+  int day; // To hold the day
+  int year; // To hold the year
+
+  // An array of strings to hold the names of the months
+  string names[NUM_MONTHS];
+
+  // An array to hold the number of days that each month has.
+  int numDays[NUM_MONTHS];
+
+  // Private member function to assign the month names
+  // to the names array
+  void setNames();
+
+  // Private member function to assign the numbers of
+  // days to the numDays array
+  void setDays();
+
+public:
+  // Constructors
+  Date();
+  Date(int, int, int);
+
+  // Mutators
+  void setMonth(int m);
+  void setDay(int d);
+  void setYear(int y);
+
+  // Other member functions
+  void showDate1();
+  void showDate2();
+ 
+
+};
+//**********************************
+// Function Definitions *
+//**********************************
+// default constructor
+Date::Date()
+{
+  setNames();
+  setDays();
+  setDay(20);
+  setMonth(12);
+    setYear(2010);
+}
+// Overloaded constructor
+Date::Date(int m, int d, int y)
+{
+  setMonth(m);
+  setDay(d);
+  setYear(y);
+  setNames();
+  setDays();
+}
+// Member function setNames
+void Date::setNames()
+{
+  names[0] = "January";
+  names[1] = "Febraury";
+  names[2] = "March";
+  names[3] = "April";
+  names[4] = "May";
+  names[5] = "June";
+  names[6] = "July";
+  names[7] = "August";
+  names[8] = "September";
+  names[9] = "October";
+  names[10] = "November";
+  names[11] = "December";
+}
+// Member function setDays
+void Date::setDays()
+{
+  numDays[0] = 31;
+  numDays[1] = 28;
+  numDays[2] = 31;
+  numDays[3] = 30;
+  numDays[4] = 31;
+  numDays[5] = 30;
+  numDays[6] = 31;
+  numDays[7] = 31;
+  numDays[8] = 30;
+  numDays[9] = 31;
+  numDays[10] = 30;
+  numDays[11] = 31;
+}
+// Member function setMonth
+void Date::setMonth(int m)
+{
+  if (m >= 1 && m <= 12)
+    month = m;
+  else
+    {
+      cout << m << " is not a valid value for the month.\n";
+    }
+}
+// Member function setDay
+void Date::setDay(int d)
+{
+  if (d >= 1 && d <= 31)
+    day = d;
+  else
+    {
+      cout << d << " is not a valid value for the day.\n";
+    }
+
+}
+// Member function setYear
+void Date::setYear(int y)
+{
+  if (y < 1900)
+    {
+      cout << "Enter a 4 digit year of 1900 or greater.\n";
+
+    }
+  else
+    year = y;
+}
+// Member function showDate1: Displays the date
+// in the form MM/DD/YY Example: 12/25/2014
+void Date::showDate1()
+{
+  cout << month << "/" << day << "/" << year;
+}
+// Member function showDate2
+// Displays the date in the following form: December 25, 2014
+void Date::showDate2()
+{
+  cout << names[month+1] << " " << day << ", ";
+  cout << year << endl;
+}
+
+
+// Function definitions for
+// Prefix ++ operator
+Date operator++(Date& d1)
+{
+
+  ++d1.day; 
+  if(d1.day > d1.numDays[d1.month-1])
+    {
+      d1.day = 1 ;
+      d1.month++;
+    }
+  if(d1.month>12)
+    {
+      d1.month = 1 ; 
+      d1.year++ ; 
+    }
+
+  return d1 ; 
+}
+
+
+// Prostfix -- operator
+Date operator --(Date& d1, int dummy)
+{
+  Date temp ; 
+  temp = d1 ; 
+  d1.day--; 
+
+  if(d1.day < 1)
+    {
+      d1.month-- ; 
+      d1.day = d1.numDays[d1.month-1];
+      if(d1.month<1)
+	{
+	  d1.month=12 ; 
+	  d1.year-- ;
+	  d1.day = d1.numDays[11];
+	}
+    }
+
+  return temp ; 
+
+}
+// Overloaded << operator
+ostream& operator<<(ostream& os, const Date& d1)
+{
+  os << d1.month << "/" << d1.day << "/" << d1.year ; 
+  return os; 
+}
+
+// Overloaded >> operator
+istream& operator>>(istream&is, Date& d1)
+{
+  cout << "ENTER MONTH: " ;
+  is >> d1.month ;
+  cout << "ENTER DAY: " ; 
+  is >> d1.day ;
+  cout << "ENTER YEAR: " ;
+  is >> d1.year  ; 
+  return is ; 
+}
+
+// Overloaded > operator
+bool operator>(const Date& d1, const Date& d2)
+{
+  bool test ; 
+  if(d1.year > d2.year) 
+    {
+      test = true ; 
+      if(d1.month > d2.month)
+	{
+	  test = true ; 
+	  if(d1.day > d2.day)
+	    {
+	      test = true ; 
+	      return true ; 
+	    }
+	}
+    }
+else 
+    return false ; 
+}
+
+// Overloaded - 
+int operator - (const Date& d1, const Date& d2) 
+{ 
+  if(d2 > d1)
+    return d2 - d1 ; 
+
+  int days, differenceY, differenceM, currentMonth ; 
+  days = 0 ; 
+
+  differenceY = (d1.year - d2.year) ; 
+  differenceM = (differenceY *12) - ( d2.month - d1.month) - 1 ; 
+
+  currentMonth = d2.month + 1 ; 
+
+  if(d1.month == d2.month && d1.year == d2.year)
+    days = d1.day - d2.day ; 
+
+  else 
+    {
+      days = d2.numDays[d2.month - 1] - d2.day ;
+
+      if(currentMonth > 12)
+	currentMonth = 1 ; 
+      
+      for(int i = 0 ; i < differenceM ; i++)
+	{
+
+	  days+= d2.numDays[currentMonth-1] ; 
+	  currentMonth++ ; 
+	    
+	    if(currentMonth > 12 )
+	    currentMonth = 1 ; 
+	}
+	 
+      days+=d1.day;  
+}
+  
+  return days ;
+}
+
+
+//*************************************
+// Function main *
+//*************************************
+int main()
+{
+  int M,D,Y; 
+
+  Date d1(2, 2, 2006);
+  Date d2(11, 10, 2003);
+
+  // Demonstrate the overloaded - and << operators by subtracting d2
+  // from d1 and printing d1, d2, and the subtraction result.
+  
+  Date d3; 
+  //  int fabs ; 
+  cout << "===========================================" << endl ;
+  cout << "Enter a new date for D1. " << endl ; 
+  cin >> d1 ; 
+  cout << "NEW DATE1: " << d1 << endl ; 
+  cout << "===========================================" << endl ;
+  cout << "Subtracting d2 from d1 and printing it." << endl ; 
+  cout << "The result is: " << d2-d1 << " days." << endl ; 
+
+
+
+  cout << "===========================================" << endl ; 
+  cout << "Setting the day to new years eve and incrementing it." << endl ; 
+  cout << "Enter month: " ;
+  cin >> M ; 
+  d3.setMonth(M) ; 
+  
+  cout << "Enter day: " ;
+  cin >> D ; 
+  d3.setDay(D);
+  
+  cout << "Enter year: " ; 
+  cin >> Y ; 
+  d3.setYear(Y) ; 
+  
+  ++d3 ; 
+  d3.showDate1() ;
+  cout << endl ;   
+
+  cout << "===========================================" << endl ;
+  cout << "CHECKING WHICH DATE IS GREATER." << endl ; 
+
+  if(d1>d2)
+    cout << d1 << " is greater than " << d2 << "." << endl ;
+  else
+    cout << d2 << " is greater than " << d1 << "." << endl ;
+  cout << "===========================================" << endl ;
+
+  cout << "Setting the date to new years and decrementing it. " << endl ; 
+  cout << "Enter month: " ;
+  cin >> M ;
+  d3.setMonth(M) ;
+
+  cout << "Enter day: " ;
+  cin >> D ;
+  d3.setDay(D);
+
+  cout << "Enter year: " ;
+  cin >> Y ;
+  d3.setYear(Y) ;
+
+  d3-- ;
+  d3.showDate1() ;
+  cout << endl ;
+
+  
+
+
+    // Demonstrate the overloaded ++ and << operators by incrementing
+  //and printing d1.
+    // set d1’s day to 31 and month to 12. Increment then print.
+    // Demonstrate the overloaded – operator:
+    // set d1’s day to 10 and month to 7 and year to 2003.
+    // Decrement then print.
+    // set d1’s day to 1 and month to 1 and year to 2004
+    // Decrement then print.
+
+
+    // Demonstrate the overloaded >> operator by entering a new date
+    // and printing it.
+
+    return 0;
+}

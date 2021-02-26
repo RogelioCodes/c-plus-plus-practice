@@ -1,0 +1,38 @@
+// Example program
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+int main()
+{
+  int quantity;
+  double unitPrice;
+  double sale, percentage, granTotal = 0, granTax = 0, total =0;
+
+do
+  {
+    cout << "Enter item quantity." << endl; 
+    cin >> quantity;
+    
+    if(quantity !=99)
+      {
+        cout << "Enter a unit price." << endl;
+        cin >> unitPrice;
+        percentage = quantity * unitPrice * .12;
+        total = quantity * unitPrice; 
+        
+        granTotal += total;
+        total += percentage;
+        cout << "Total sale for this item is: " << total << endl;
+        granTax += percentage
+	  }
+  }while (quantity !=-99);
+
+ cout << "Subtotal: " << granTotal << endl;
+ cout << "Sales Tax: " << granTax << endl;
+ cout << "Total:" << granTotal + granTax << endl;
+
+return 0;
+
+}

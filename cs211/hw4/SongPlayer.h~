@@ -1,0 +1,42 @@
+/* Rogelio Cordova
+   HW 4
+   11/28/2017
+
+A program that manages songs playlists in media player applications. The program
+should allow typical media player functionalities such as playing the current song, previous
+song, next song, play the entire playlist, delete a song... To do that, the program creates a
+circular doubly linked list of Songs sorted by their names.
+*/
+
+
+#ifndef SONGPLAYER_H
+#define SONGPLAYER_H
+ 
+#include "Song.h" 
+class SongPlayer
+{
+  friend struct Song ; 
+ private:
+  Song * head; // pointer to list head
+  Song * current ; // pointer to current node being played. It is initialized to NULL
+  // and is updated as new songs are played/deleted
+
+ public:
+  SongPlayer() ; 
+  ~SongPlayer(); 
+  void addSong(string sName, string sArtist, string sGenre, double sLength) ;
+  void playSong(string sName) ;
+  void playCurrentSong() ; 
+  void playNextSong() ; 
+  void playPreviousSong() ; 
+  void deleteSong(string sName) ; 
+  void deleteCurrentSong() ; 
+  void playAll (string sGenre) ; 
+  void playList() ; 
+  void reversePlayList() ; 
+  void processTransactionFile() ; 
+
+
+}
+;
+#endif

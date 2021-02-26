@@ -1,0 +1,36 @@
+#ifndef FLATRATEPACKAGE_H 
+#define FLATRATEPACKAGE_H
+#include "Package.h" 
+//This class is a flat rate package class with functions for getting dimensions and calculating cost bsaed on those dimensions
+class FlatRatePackage: public Package
+{
+ private:
+  string type ;  
+  double width ;
+  double length ;
+  double height ; 
+
+ public: 
+
+  FlatRatePackage() ;
+  
+FlatRatePackage(string sn, string sa, string sc, string ss, long sz, string rn, string ra, string rc, string rs,long rz, string lab, string d, double w, double c, string ins, string sign,string typ, double wid, double len, double h) ;
+
+
+  double calculateCost() ; 
+  string getType() const ; 
+  double getWidth() const ; 
+  double getLength() const ;
+  double getHeight() const ; 
+
+
+  void setType(string t) ; 
+  void setWidth(double w) ; 
+  void setLength(double l) ; 
+  void setHeight(double h) ; 
+
+  void printFlatRatePackage() ; 
+  
+}
+;
+#endif

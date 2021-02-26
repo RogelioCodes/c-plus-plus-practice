@@ -1,0 +1,13 @@
+#include"InstructorProfile.h"
+#include<fstream>
+#include<vector>
+using namespace std ; 
+
+int main()
+{
+  Course c ; 
+  c.setACourse(111, "cs111", 4) ;
+  c.printACourse() ; 
+
+  return 0 ; 
+}

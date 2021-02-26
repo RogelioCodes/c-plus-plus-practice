@@ -1,0 +1,22 @@
+#include "student.h"
+using namespace std ;
+
+//void setTuition(Student& s);
+
+
+
+int main()
+{
+  Student s1;//, s2;  
+  s1.print() ; 
+  cout << endl << endl ; 
+
+  Student s2);
+  s2.getData();
+  setTuition(s2) ; 
+  s2.print() ; 
+
+  return 0 ; 
+}
+
+

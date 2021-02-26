@@ -1,0 +1,230 @@
+
+
+
+#include <iostream>
+#include<string>
+using namespace std;
+class LL;
+class Node
+{
+  friend class LL;
+private:
+  string firstName;
+  string lastName;
+  string phoneNumber;
+  Node * nextRecord;
+};
+class LL
+{
+private:
+  Node * head;
+  void destroy();
+public:
+  LL();
+  LL(const LL&);
+  ~LL();
+  void append(string, string, string);
+  void insertAtBeginning(string, string, string);
+  void insertAtPos(string, string, string, int);
+  void print();
+  void searchByName(string, string);
+  void updateNumber(string, string, string);
+  void removeRecord(string, string);
+  void reverse();
+};
+//--------------------------------------------
+// the default constructor
+LL::LL()
+{
+  head = nullptr ; 
+}
+//--------------------------------------------
+// the copy constructor
+LL::LL(const LL& source)
+{
+  head = source.head ; 
+}
+//--------------------------------------------
+// the destructor
+LL::~LL()
+{
+}
+//--------------------------------------------
+// print the linked list
+void LL::print ()
+{
+ Node *nodePtr ; 
+ nodePtr = head;  
+
+ while(nodePtr) 
+   {
+     cout << nodePtr-> firstName << ", " << nodePtr-> lastName << ", " << nodePtr-> phoneNumber << endl ; 
+     nodePtr= nodePtr->  nextRecord; 
+     //     cout << endl ; 
+   }
+ cout << endl ; 
+}
+//--------------------------------------------
+// search for a particular person in the list and print the
+// corresponding phone number
+void LL::searchByName (string fName, string lName)
+{
+}
+//--------------------------------------------
+// create a node and insert the node on the top of the
+// linked list before the first node.
+void LL::insertAtBeginning (string fName, string lName, string
+                            phone)
+{
+  //1: make new node
+  //2: make new node point to head
+  //3:
+  // Node *tmp ;
+
+  Node * tmp = new Node;
+  tmp -> nextRecord = nullptr;
+  tmp -> firstName = fName  ;
+  tmp -> lastName = lName ;
+  tmp -> phoneNumber = phone ;
+  tmp -> nextRecord = head ;
+  head = tmp ;
+
+}
+
+//--------------------------------------------
+// create a node and appends the node at the end of the
+// linked list after the last node.
+void LL::append(string fName, string lName, string phone)
+{
+  Node *newNode ;
+  Node *nodePtr ;
+
+  newNode = new Node ;
+  newNode -> firstName = fName ;
+  newNode -> lastName = lName ;
+  newNode -> phoneNumber = phone ;
+  newNode -> nextRecord = nullptr ;
+
+  if(!head)
+    head = newNode ;
+  else
+    {
+      nodePtr = head ;
+
+      while(nodePtr->nextRecord)
+        nodePtr = nodePtr ->nextRecord ;
+
+      nodePtr -> nextRecord = newNode ;
+    }
+  cout << "append :" << endl ; 
+}
+//--------------------------------------------
+// create a node and insert the node at the position pos
+void LL::insertAtPos (string fName, string lName, string phone, int
+		      pos)
+{
+  int tempPos = 0 ; 
+  
+  Node * curr = new Node ; 
+  Node * prev = new Node ; 
+  Node * newNode = new Node ;
+  
+  newNode -> firstName = fName ;
+  newNode -> lastName = lName ; 
+  newNode -> phoneNumber = phone ; 
+
+  // int tempPos = 0;   // Traverses through the list
+  //
+  curr = head;      // Initialize current to head;
+  if(head != NULL)
+    {
+      while(curr->next != NULL && tempPos != pos)
+	{
+	  prev = curr;
+	  curr = curr->next;
+	  tempPos++;
+	}
+      if(pos==0)
+	{
+	  cout << "Adding at Head! " << endl;
+	  // Call function to addNode from head;
+	}
+      else if(curr->next == NULL && pos == tempPos+1)
+	{
+	  cout << "Adding at Tail! " << endl;
+	  // Call function to addNode at tail;
+	}
+      else if(pos > tempPos+1)
+	cout << " Position is out of bounds " << endl;
+      //Position not valid
+
+      else
+	{
+	  prev->next = newNode;
+	  newNode->next = curr;
+	  cout << "Node added at position: " << pos << endl;
+	}
+    }
+  else
+    {
+      head = newNode;
+      newNode->next=NULL;
+      cout << "Added at head as list is empty! " << endl;
+    }
+}
+
+//--------------------------------------------
+// remove a person's record from the list
+void LL::removeRecord (string fName, string lName)
+{
+}
+//--------------------------------------------
+// Update a person's phone number
+void LL::updateNumber(string fName, string lName, string newPhone)
+{
+}
+//--------------------------------------------
+// Destroy all the nodes in the list
+void LL::destroy()
+{
+
+}
+//--------------------------------------------
+// traverse the list and reverse the list nodes so the last node
+// becomes the first and the first node becomes the last one
+void LL:: reverse()
+{
+}
+//--------------------------------------------
+int main ()
+{
+  LL list1;
+  //  Node *head ;
+  //Node * nodePtr = head ;
+  list1.append ("Mayssaa", "Najjar", "878-635-1234");
+  list1.insertAtBeginning ("Jim", "Meyer", "337-465-2345");
+  list1.append ("Joe", "Didier", "352-654-1983");
+  list1.insertAtPos ("Adam", "James", "202-872-1010", 2);
+  list1.print() ; 
+  list1.insertAtBeginning("Nancy", "Garcia", "617-227-5454");
+  cout << "PRINNNNT" << endl ;
+  list1.print();
+
+  /*
+  list1.searchByName ("Nancy", "Garcia");
+  list1.searchByName ("Jamie", "Garcia");
+  list1.updateNumber ("Nancy", "Garcia", "989-876-1234");
+  list1.updateNumber ("Jamie", "Garcia", "345-467-1234");
+  list1.removeRecord ("Mayssaa", "Najjar");
+  list1.print();
+
+
+  list1.reverse();
+  list1.print();
+  LL list2(list1);
+  list2.print();
+  */
+
+  return 0;
+
+}

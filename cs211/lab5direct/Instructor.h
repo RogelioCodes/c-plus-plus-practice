@@ -1,0 +1,20 @@
+#ifndef Instructor_H
+#define Instructor_H
+#include "Course.h"
+#include<string> 
+class Instructor
+{
+  long employeeID ;
+  string officeNumber ;
+  Course courses[3] ;
+
+ public: 
+  void  setAnInstructor(long empID, string officeNum,
+				    long c1num, string c1name, int c1cr,
+			            long c2num, string c2name, int c2cr,
+				    long c3num, string c3name, int c3cr) ;
+
+  void printAnInstructor() const ; 
+}
+;
+#endif
